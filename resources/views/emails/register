@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Account Info</title>
+</head>
+<body>
+<table>
+	<tr>
+		<td>Welcome to ecommerce bd. Your account details is bellow.</td>
+	</tr>
+	<tr>
+		<td>Name: {{ $name }}</td>
+	</tr>
+	<tr>
+		<td>Email: {{ $email }}</td>
+	</tr>
+	<tr>
+		<td>Password: **** (choose by you)</td>
+	</tr>
+	<tr>
+		<td>Thanks to stay with Ecommerce BD</td>
+	</tr>
+</table>
+</body>
+</html>
