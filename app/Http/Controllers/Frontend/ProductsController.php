@@ -17,8 +17,13 @@ use DB;
 
 class ProductsController extends Controller
 {
-  public function products(){
-     $products = Product::get()->toArray();
+  public function products(Request $request){
+   //$products = Product::get()->toArray();
+     $products = Product::paginate(8);
+     if ($request->ajax()) {
+        $view = view('frontend.products.products_data',compact('products'))->render();
+        return response()->json(['html'=>$view]);
+    }
      return view('frontend.products.products',compact('products'));
   }
 

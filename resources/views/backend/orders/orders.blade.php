@@ -45,12 +45,11 @@
                   <th>Order ID</th>
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Phone</th>
                   <th>Product Code</th>
                   <th>Status</th>
                   <th>Pay Method</th>
                   <th>Pay Gateway</th>
-                  <th>Action</th>
+                  <th>Details</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -59,7 +58,6 @@
                   <td>{{ $order['id'] }}</td>
                   <td>{{ $order['name'] }}</td>
                   <td>{{ $order['email'] }}</td>
-                  <td>{{ $order['phone'] }}</td>
                   <td>
                      @foreach($order['order_products'] as $pro )
                      {{ $pro['product_code']}} ({{ $pro['product_quantity']}}) <br>
@@ -69,7 +67,7 @@
                   <td>{{ $order['payment_method'] }}</td>
                   <td>{{ $order['payment_gateway'] }}</td>
                   <td>
-                    <a title="Edit Product" class="text-warning" href=""><i class="fa fa-edit"></i></a>
+                    <a title="Edit Product" class="text-primary" href="{{ url('admin/order-details/'.$order['id']) }}"><i class="fa fa-eye"></i></a>
                   </td>
                 </tr>
                 @endforeach
@@ -79,11 +77,10 @@
                   <th>Order ID</th>
                   <th>Name</th>
                   <th>Email</th>
-                  <th>Phone</th>
                   <th>Status</th>
                   <th>Pay Method</th>
                   <th>Pay Gateway</th>
-                  <th>Action</th>
+                  <th>Details</th>
                 </tr>
                 </tfoot>
               </table>

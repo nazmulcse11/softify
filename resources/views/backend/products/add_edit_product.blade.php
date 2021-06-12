@@ -72,6 +72,12 @@
                  </div>
                  <div class="col-md-6">
                   <div class="form-group">
+                  	<label for="product_price">Product Stock <span class="text-red">*</span></label>
+                   <input type="text" class="form-control" name="product_stock" id="product_stock" placeholder="Enter Product Stock" @if(!empty($productdata['product_stock'])) value="{{$productdata['product_stock']}}" @else value="{{old('product_stock')}}" @endif>
+                  </div>
+                 </div>
+                 <div class="col-md-6">
+                  <div class="form-group">
                     <label for="main_image">Product Image</label>
                     <div class="input-group">
                       <div class="custom-file">

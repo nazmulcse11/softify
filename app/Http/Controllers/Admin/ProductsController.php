@@ -41,6 +41,7 @@ class ProductsController extends Controller
     			'product_name' => 'required|regex:/^[\pL\s\-]+$/u',
     			'product_color' => 'required|regex:/^[\pL\s\-]+$/u',
     			'product_price' => 'required|numeric',
+    			'product_stock' => 'required|numeric',
     		];
     		$customMessage = [
     			'product_code.required' => 'Product code is required',
@@ -51,6 +52,8 @@ class ProductsController extends Controller
     			'product_color.regex' => 'Valid product color is required',
     			'product_price.required' => 'Product price is required',
     			'product_price.numeric' => 'Valid product price is required',
+				'product_stock.required' => 'Product stock is required',
+    			'product_stock.numeric' => 'Valid product stock is required',
     		];
 
     		$this->validate($request,$rules,$customMessage);
@@ -79,6 +82,7 @@ class ProductsController extends Controller
     		 $product->product_name = $data['product_name'];
     		 $product->product_color = $data['product_color'];
     		 $product->product_price = $data['product_price'];
+    		 $product->product_stock = $data['product_stock'];
     		 $product->product_image = $imageName;
     		 $product->save();
 

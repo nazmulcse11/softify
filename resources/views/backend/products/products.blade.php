@@ -44,7 +44,8 @@
                 <tr>
                   <th>No</th>
                   <th>Product Name</th>
-                  <th>Product code</th>
+                  <th>Product Code</th>
+                  <th>Product Stock</th>
                   <th>Product Color</th>
                   <th>Product Image</th>
                   <th>Action</th>
@@ -56,6 +57,7 @@
                   <td>{{$key+1}}</td>
                   <td>{{$product->product_name}}</td>
                   <td>{{$product->product_code}}</td>
+                  <td>{{$product->product_stock}}</td>
                   <td>{{$product->product_color}}</td>
                    <td> 
                     <?php $product_image_path = 'images/products/'.$product->product_image;?>

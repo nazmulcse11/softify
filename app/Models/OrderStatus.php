@@ -5,11 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Order extends Model
+class OrderStatus extends Model
 {
     use HasFactory;
-
-    public function orderProducts(){
-        return $this->hasMany('App\Models\OrdersProduct','order_id');
-    }
 }

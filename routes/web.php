@@ -12,7 +12,8 @@ use App\Http\Controllers\Frontend\UsersController;
 // });
 
 Auth::routes();
-Auth::routes(['register' => false]);
+Route::match(['get', 'post'], '/register', function(){return redirect('/');});
+Route::match(['get', 'post'], '/login', function(){return redirect('/');});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
@@ -36,6 +37,8 @@ Route::group(['prefix'=>'admin'],function(){
 
         //Orders route
         Route::get('/orders',[OrdersController::class,'orders']);
+        Route::get('/order-details/{id}',[OrdersController::class,'orderDetails']);
+        Route::post('/update-order-status',[OrdersController::class,'updateOrderStatus']);
     });     
     
 });
@@ -44,14 +47,19 @@ Route::group(['prefix'=>'admin'],function(){
 
 //Login register page
 Route::get('/login-register',[App\Http\Controllers\Frontend\UsersController::class,'loginRegister']);
+
 //Check email already exists or not while register
 Route::match(['get','post'],'/check-email',[App\Http\Controllers\Frontend\UsersController::class,'checkEmail']);
+
 //Register a user
 Route::post('/user-register',[App\Http\Controllers\Frontend\UsersController::class,'registerUser']);
+
 //Confirm user account from mail
 Route::match(['get','post'],'/confirm/{code}',[App\Http\Controllers\Frontend\UsersController::class,'confirmAccount']);
+
 //Login user
 Route::post('/user-login',[App\Http\Controllers\Frontend\UsersController::class,'userLogin']);
+
 //Logout user
 Route::get('/user-logout',[App\Http\Controllers\Frontend\UsersController::class,'userLogout']);
 
@@ -65,23 +73,30 @@ Route::get('/auth/facebook/callback', [App\Http\Controllers\Frontend\UsersContro
 
 // Products routes
 Route::get('/',[App\Http\Controllers\Frontend\ProductsController::class,'products']);
+
 Route::group(['middleware'=>['auth']],function(){
 
 //Add to cart
 Route::get('/add-to-cart/{id}',[App\Http\Controllers\Frontend\ProductsController::class,'addToCart']);
+
 //Show cart items
 Route::get('/cart',[App\Http\Controllers\Frontend\ProductsController::class,'cartItems']);
+
 //Update cart item
 Route::post('/update-cart-item-qty',[App\Http\Controllers\Frontend\ProductsController::class,'updateCartItemQty']);
+
 //Delete cart item
 Route::post('/delete-cart-item',[App\Http\Controllers\Frontend\ProductsController::class,'deleteCartItem']);
+
 //Checkout page
 Route::match(['get','post'],'/checkout',[App\Http\Controllers\Frontend\ProductsController::class,'checkout']);
+
 //thanks page
 Route::get('/thanks',[App\Http\Controllers\Frontend\ProductsController::class,'thanks']);
 
 //Add edit shipping address
 Route::match(['get','post'],'/add-edit-address/{id?}',[App\Http\Controllers\Frontend\ProductsController::class,'addEditAddress']);
+
 //Delete shipping address
 Route::get('/delete-shipping-address/{id?}',[App\Http\Controllers\Frontend\ProductsController::class,'deleteShippingAddress']);
 
